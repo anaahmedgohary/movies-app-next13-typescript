@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/node_modules/
+node_modules
 /.pnp
 .pnp.js
 
@@ -33,3 +35,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# me
+guidefolder/
+/.vscode
+/certificates
+server.js
