@@ -6,8 +6,8 @@ const roboto_Mono = Roboto_Mono({ subsets: ["latin"] });
 import { childrenType } from "@/types";
 
 export const metadata = {
-  title: "thy profile",
-  description: "nola app",
+  title: "search stars",
+  description: "search stars",
 };
 
 // type childrenType = {
