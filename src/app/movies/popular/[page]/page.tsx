@@ -45,28 +45,23 @@ export default async function MoviesPage({
           page={page}
           padding={"pt-8 pb-2"}
         >
-          <>
-            <div className="text-center">
-              <h1 className="text-3xl">Popular Movies</h1>
-            </div>
-          </>
+          <div className="text-center">
+            <h1 className="text-3xl">Popular Movies</h1>
+          </div>
         </Pagination>
 
+        <div className="e text-center bg-blue-950">
+          <Suspense
+            fallback={<div className="text-center"> loading Movies...</div>}
+          >
+            <MoviesMapper moviesArry={moviesArray} />
+          </Suspense>
+        </div>
         <Pagination
           category={"movies/popular"}
           page={page}
           padding={"pt-8 pb-14"}
-        >
-          <>
-            <div className="e text-center bg-blue-950">
-              <Suspense
-                fallback={<div className="text-center"> loading Movies...</div>}
-              >
-                <MoviesMapper moviesArry={moviesArray} />
-              </Suspense>
-            </div>
-          </>
-        </Pagination>
+        />
       </div>
     </>
   );

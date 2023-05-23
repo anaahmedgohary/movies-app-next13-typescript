@@ -68,20 +68,19 @@ export default async function MoviesPage({
           </div>
         </Pagination>
 
+        <div className="e text-center bg-blue-950">
+          <Suspense
+            fallback={<div className="text-center"> loading Movies...</div>}
+          >
+            {/* <MoviesMap url={listurl} /> */}
+            <MoviesMapper moviesArry={moviesArray} />
+          </Suspense>
+        </div>
         <Pagination
           category={"movies/upcoming"}
           page={page}
           padding={"pt-8 pb-14"}
-        >
-          <div className="e text-center bg-blue-950">
-            <Suspense
-              fallback={<div className="text-center"> loading Movies...</div>}
-            >
-              {/* <MoviesMap url={listurl} /> */}
-              <MoviesMapper moviesArry={moviesArray} />
-            </Suspense>
-          </div>
-        </Pagination>
+        />
       </div>
     </>
   );

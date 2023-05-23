@@ -124,6 +124,13 @@ export default async function SearchPage({
             );
           })}
       </div> */}
+      <div className="e text-center bg-blue-950">
+        <Suspense
+          fallback={<div className="text-center"> loading Movies...</div>}
+        >
+          <MoviesMapper moviesArry={sortedBypopularity} />
+        </Suspense>
+      </div>
 
       <Pagination
         category={"search"}
@@ -131,15 +138,7 @@ export default async function SearchPage({
         padding={"pt-8 pb-14"}
         queryParams={`?query=${query}`}
         totalPages={paginationArray}
-      >
-        <div className="e text-center bg-blue-950">
-          <Suspense
-            fallback={<div className="text-center"> loading Movies...</div>}
-          >
-            <MoviesMapper moviesArry={sortedBypopularity} />
-          </Suspense>
-        </div>
-      </Pagination>
+      />
     </div>
   );
 }
