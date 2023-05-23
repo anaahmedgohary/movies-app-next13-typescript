@@ -13,13 +13,13 @@ export default function Pagination({
 }: {
   children?: React.ReactNode;
   category: string;
-  page: number;
+  page: string;
   padding: string;
   queryParams?: string;
   totalPages?: number[];
 }) {
   const pagesArray = totalPages || [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const [currentPage, setCurrentPage] = useState(page);
+  const [currentPage, setCurrentPage] = useState(parseInt(page));
 
   //   console.log(page);
   return (
@@ -39,7 +39,7 @@ export default function Pagination({
                 <Link
                   href={`/${category}/${item}${queryParams || ""}`}
                   className={`flex-1 text-center min-w-[52px] py-2 rounded-md duration-200  ${
-                    item == currentPage // == to avoid string to number
+                    item === currentPage // == to avoid string to number
                       ? "bg-green-800 cursor-default pointer-events-none"
                       : "hover:bg-yellow-600"
                   }`}

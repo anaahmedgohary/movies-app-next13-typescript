@@ -9,7 +9,7 @@ export default function HeaderComponent() {
   const LinkClasses = `min-w-[100px] border py-2 rounded-md duration-300 hover:bg-green-600`;
   return (
     <div>
-      <div className="text-center pb-10 pt-8 px-20 flex flex-wrap gap-5 justify-center items-center bg-gray-800 border-b-2">
+      <div className="text-center pb-10 pt-8 px-20 flex flex-wrap gap-5 justify-center items-center bg-gray-950 border-b-2">
         <Link className={LinkClasses} href="">
           Home
         </Link>

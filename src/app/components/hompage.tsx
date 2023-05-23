@@ -1,16 +1,18 @@
-"use client";
+// "use client";
 // imports
 import { Viga } from "next/font/google";
 const font = Viga({ subsets: ["latin"], weight: ["400"] });
 import Link from "next/link";
 import Image from "next/image";
 import categoriesArr from "@/assets/static-data/categoriesArr";
+import SearchBar from "./search";
 //////////////
 
 export default function Hompage() {
   return (
     <div className="flex flex-col justify-start min-h-screen bg-gray-600">
-      <div className="movieCategories text-center flex flex-wrap gap-5 justify-center items-center py-[100px] px-2">
+      <SearchBar />
+      <div className="movieCategories flex-1 w-full text-center flex flex-wrap gap-5 justify-center items-center py-[100px] px-2">
         {categoriesArr.map((item, index) => {
           return (
             <div

@@ -1,4 +1,6 @@
 import { childrenType } from "@/types";
+import SearchBar from "@/app/components/search";
+
 ///////////
 
 export const metadata = {
@@ -6,5 +8,8 @@ export const metadata = {
   description: "Popular Movies Page",
 };
 export default function PopularLayout({ children }: childrenType) {
-  return <div className="min-h-screen">{children}</div>;
+  return <div className="min-h-screen bg-blue-950 pt-8">
+    <SearchBar></SearchBar>
+    {children}
+    </div>;
 }

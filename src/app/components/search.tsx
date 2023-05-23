@@ -26,14 +26,14 @@ export default function SearchBar({ children }: childrenType) {
   }
   return (
     <>
-      <div className="text-center py-5 w-full bg-black">
+      <div className="text-center py-5 w-full">
         <form
           onSubmit={handelSubmit}
           className="flex flex-wrap gap-2 justify-center items-center"
         >
-          <div>
+          <div className="min-w-[300px] w-full max-w-[600px] px-1">
             <input
-              className="text-center text-lg py-4 min-w-[300px] rounded-full bg-gray-800 outline-yellow-200 border-none"
+              className="text-center text-lg py-4 mmin-w-[300px] w-full mmax-w-[600px] rounded-full bg-gray-950 bg-opacity-80 focus:bg-opacity-100 border-none outline-none outline-[0px] outline-offset-0 outline-transparent focus:outline-green-400 focus:outline-[1px] ring-1 ring-offset-0"
               onChange={(e) => setSearchValue(e.target.value)}
               value={searchValue}
               placeholder="Search"

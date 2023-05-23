@@ -26,10 +26,11 @@ export default async function SearchPage({
   params,
   searchParams,
 }: {
-  params: { page: number };
+  params: { page: string };
   searchParams: { [key: string]: string };
 }) {
   const page = params.page;
+  console.log(typeof params.page);
   const qParam = searchParams?.query.toString();
   const query = qParam.replace(" ", "%20") || "no";
   // (searchParams && searchParams?.query.replace(" ", "%20")) || "no";
@@ -74,8 +75,8 @@ export default async function SearchPage({
     return arr;
   })();
 
-  console.log(colors.green(`${pagesFound}`));
-  console.log(colors.green(`${matchesFound}`));
+  // console.log(colors.green(`${pagesFound}`));
+  // console.log(colors.green(`${matchesFound}`));
 
   if (movieSearchResults.length < 1) {
     return (
@@ -90,7 +91,7 @@ export default async function SearchPage({
   }
 
   return (
-    <div>
+    <div className="pt-8">
       <Pagination
         category={"search"}
         page={page}

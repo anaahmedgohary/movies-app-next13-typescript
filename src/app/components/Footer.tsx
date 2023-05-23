@@ -8,7 +8,7 @@ export default function FooterComponent() {
   const [username, setUserName] = useState("Anonymous");
   const LinkClasses = `duration-100 hover:text-green-600`;
   return (
-    <div className="bg-black text-center pb-4">
+    <div className="bg-black text-center pb-4 pt-16">
       <div className="text-center flex flex-wrap gap-5 justify-center items-center pb-2">
         <div>
             <p>MovieNo1</p>

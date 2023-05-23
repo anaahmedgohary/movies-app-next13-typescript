@@ -25,7 +25,7 @@ export default function MovieComponent({
   }
 
   return (
-    <div className="bg-black pt-10 pb-20">
+    <div className="bg-black pt-10">
       <div
         style={{
           backgroundImage: `url(${imagePath + movieObject?.backdrop_path})`,

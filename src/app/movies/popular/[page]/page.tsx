@@ -9,7 +9,7 @@ import { MovieObject } from "@/types";
 export default async function MoviesPage({
   params: { page },
 }: {
-  params: { page: number };
+  params: { page: string };
 }) {
   const baseUrl = process.env.BASE_URL || "/api";
   const listurl = `https://api.themoviedb.org/3/movie/popular?page=${page}&api_key=${process.env.MOVIEDB_API_KEY}`;
@@ -39,7 +39,7 @@ export default async function MoviesPage({
 
   return (
     <>
-      <div className="bg-blue-950 pt-8">
+      <div className="pt-8">
         <Pagination
           category={"movies/popular"}
           page={page}

@@ -7,7 +7,7 @@ import colors from "colors/safe";
 export default async function MoviesPage({
   params: { page },
 }: {
-  params: { page: number };
+  params: { page: string };
 }) {
   // const baseUrl = process.env.BASE_URL || "/api";
 

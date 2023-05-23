@@ -1,5 +1,5 @@
 export type childrenType = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export type MovieObject = {
