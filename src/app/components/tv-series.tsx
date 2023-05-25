@@ -37,7 +37,7 @@ export default function TvSeriesComponent({
         className="bg-cover bg-center bg-black bg-opacity-80 bg-blend-multiply"
       >
         <div className=" text-center py-10 bg-slate-950 bg-opacity-20">
-          <h1 className=" text-6xl">{TvSeriesObj?.name}</h1>
+          <h1 className="text-6xl text-green-200">{TvSeriesObj?.name}</h1>
         </div>
         <div className="flex flex-wrap items-center gap-3 py-8 px-1">
           <Image
@@ -58,28 +58,95 @@ export default function TvSeriesComponent({
                 type: "language",
               }).of(TvSeriesObj?.original_language)}
             </p>
-            <p>Tv series</p>
+            <p className="opacity-80 text-gray-400">Tv series</p>
           </div>
         </div>
         <div className="overviewDiv px-5 bg-black bg-opacity-60">
-          <div className=" border-b-2">
-            <p>Genres: {genresArray.join(" + ")}</p>
-            <p>First air date: {TvSeriesObj?.first_air_date}</p>
-            <p>Last aired on: {TvSeriesObj.last_air_date}</p>
-            <p>
-              Last episode aired:{" "}
-              {TvSeriesObj?.last_episode_to_air?.episode_number}
-            </p>
-            <p>Number of seasons: {TvSeriesObj.number_of_seasons}</p>
-            <p>Number of episodes: {TvSeriesObj.number_of_episodes}</p>
-            <p>Type: {TvSeriesObj?.type}</p>
-            <p>Vote average: {TvSeriesObj?.vote_average.toFixed(1)}</p>
-            <p>Watch on: {TvSeriesObj?.networks[0]?.name}</p>
-            <p>Creator: {TvSeriesObj?.created_by[0]?.name}</p>
-            <p>status: {TvSeriesObj?.status}</p>
+          <div className="border-b-2 py-6 flex flex-col gap-2">
+            <div className="flex flex-wrap gap-x-2">
+              <span className="text-center text-gray-300"></span>
+              <p className="text-green-600 font-semibold">{}</p>
+            </div>
+            <div className="flex flex-wrap gap-x-2">
+              <span className="text-center text-gray-300">Genres:</span>
+              <p className="text-green-600 font-semibold">
+                {genresArray.join(" + ")}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-x-2">
+              <span className="text-center text-gray-300">First air date:</span>
+              <p className="text-green-600 font-semibold">
+                {TvSeriesObj?.first_air_date}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-x-2">
+              <span className="text-center text-gray-300">Last aired on:</span>
+              <p className="text-green-600 font-semibold">
+                {TvSeriesObj.last_air_date}
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-x-2">
+              <span className="text-center text-gray-300">
+                Last episode aired:
+              </span>
+              <p className="text-green-600 font-semibold">
+                {TvSeriesObj?.last_episode_to_air?.episode_number}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-x-2">
+              <span className="text-center text-gray-300">
+                Number of seasons:
+              </span>
+              <p className="text-green-600 font-semibold">
+                {TvSeriesObj.number_of_seasons}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-x-2">
+              <span className="text-center text-gray-300">
+                Number of episodes:
+              </span>
+              <p className="text-green-600 font-semibold">
+                {TvSeriesObj.number_of_episodes}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-x-2">
+              <span className="text-center text-gray-300">Type:</span>
+              <p className="text-green-600 font-semibold">
+                {TvSeriesObj?.type}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-x-2">
+              <span className="text-center text-gray-300">Vote average:</span>
+              <p className="text-green-600 font-semibold">
+                {TvSeriesObj?.vote_average.toFixed(1)}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-x-2">
+              <span className="text-center text-gray-300">Watch on:</span>
+              <p className="text-green-600 font-semibold">
+                {TvSeriesObj?.networks[0]?.name}
+              </p>
+            </div>
+            {TvSeriesObj?.created_by[0]?.name ? (
+              <div className="flex flex-wrap gap-x-2">
+                <span className="text-center text-gray-300">Creator:</span>
+                <p className="text-green-600 font-semibold">
+                  {TvSeriesObj?.created_by[0]?.name}
+                </p>
+              </div>
+            ) : (
+              ""
+            )}
+            <div className="flex flex-wrap gap-x-2">
+              <span className="text-center text-gray-300">Status:</span>
+              <p className="text-green-600 font-semibold">
+                {TvSeriesObj?.status}
+              </p>
+            </div>
           </div>
           <div className=" py-4 grid text-center">
-            <h6 className="py-2 font-bold text-lg ">overview</h6>
+            <h6 className="py-2 font-bold text-lg text-green-600">overview</h6>
             <p className={`${akayaTelivigala.className} italic`}>
               {TvSeriesObj?.tagline}
             </p>
@@ -87,8 +154,8 @@ export default function TvSeriesComponent({
           </div>
         </div>
 
-        <div className="linksDiv px-5 bg-black bg-opacity-60 border-t-2">
-          <h6 className="py-2 font-bold text-lg ">Links</h6>
+        <div className="linksDiv px-5 pb-2 bg-black bg-opacity-60 border-t-2">
+          <h6 className="py-2 font-bold text-lg text-green-600">Links</h6>
           <div className=" py-4 grid items-center justify-start text-center">
             <Link
               prefetch={false}

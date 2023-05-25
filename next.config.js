@@ -15,6 +15,13 @@ const nextConfig = {
       "images.pexels.com",
       "pexels.com",
       "media.istockphoto.com",
+      "hips.hearstapps.com",
+      "cinedope.com",
+      "www.thenews.com.pk",
+      "static1.colliderimages.com",
+      "www.geo.tv",
+      "imgix.ranker.com",
+      "preview.redd.it",
     ],
   },
 };

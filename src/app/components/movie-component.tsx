@@ -33,7 +33,7 @@ export default function MovieComponent({
         className="movie_container bg-cover bg-center bg-black bg-opacity-80 bg-blend-multiply"
       >
         <div className=" text-center py-10 bg-slate-950 bg-opacity-20">
-          <h1 className=" text-6xl">{movieObject?.title}</h1>
+          <h1 className="text-6xl text-green-200">{movieObject?.title}</h1>
         </div>
         <div className="flex flex-wrap items-center gap-3 py-8 px-1">
           <Image
@@ -54,18 +54,38 @@ export default function MovieComponent({
                 type: "language",
               }).of(movieObject?.original_language)}
             </p>
-            <p>Movie</p>
+            <p className="opacity-80 text-gray-400">Movie</p>
           </div>
         </div>
         <div className="overviewDiv px-5 bg-black bg-opacity-60">
-          <div className=" border-b-2">
-            <p>Genres: {genresArray.join(" + ")}</p>
-            <p>Release date: {movieObject?.release_date}</p>
-            <p>Vote average: {movieObject?.vote_average.toFixed(1)}</p>
-            <p>runtime: {movieObject?.runtime} minutes</p>
+          <div className="border-b-2 py-6 flex flex-col gap-2">
+            <div className="flex flex-wrap gap-x-2">
+              <span className="text-center text-gray-300">Genres:</span>
+              <p className="text-green-600 font-semibold">
+                {genresArray.join(" + ")}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-x-2">
+              <span className="text-center text-gray-300">Release date:</span>
+              <p className="text-green-600 font-semibold">
+                {movieObject?.release_date}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-x-2">
+              <span className="text-center text-gray-300">Vote average:</span>
+              <p className="text-green-600 font-semibold">
+                {movieObject?.vote_average.toFixed(1)}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-x-2">
+              <span className="text-center text-gray-300">Runtime:</span>
+              <p className="text-green-600 font-semibold">
+                {movieObject?.runtime} minutes
+              </p>
+            </div>
           </div>
           <div className=" py-4 grid text-center">
-            <h6 className="py-2 font-bold text-lg ">overview</h6>
+            <h6 className="py-2 font-bold text-lg text-green-600">overview</h6>
             <p className={`${akayaTelivigala.className} italic`}>
               {movieObject?.tagline}
             </p>
@@ -73,8 +93,8 @@ export default function MovieComponent({
           </div>
         </div>
 
-        <div className="linksDiv px-5 bg-black bg-opacity-60 border-t-2">
-          <h6 className="py-2 font-bold text-lg ">Links</h6>
+        <div className="linksDiv px-5 pb-2 bg-black bg-opacity-60 border-t-2">
+          <h6 className="py-2 font-bold text-lg text-green-600">Links</h6>
           <div className=" py-4 grid items-center justify-start text-center">
             <Link
               prefetch={false}

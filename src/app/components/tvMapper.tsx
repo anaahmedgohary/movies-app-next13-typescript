@@ -19,10 +19,9 @@ export default function TvMapper({
 
   return (
     <div>
-      <div className="moviesListContainer pt-10">
-        <ul className="moviesList flex flex-wrap gap-10 p-5">
+      <div className="pt-10">
+        <ul className="flex flex-wrap gap-10 p-5">
           {seriesArray.map((item) => {
-            // console.log(movie.release_date);
             return (
               <li
                 className=" flex-1 flex flex-col gap-3 justify-center items-center py-5 border-4 bg-gray-900 min-w-[320px] rounded-md group hover:bg-gray-800 overflow-x-hidden"
@@ -31,13 +30,15 @@ export default function TvMapper({
                 <Link
                   href={`/tv/series/${item?.id}`}
                   // prefetch={false}
-                  className="max-w-full max-h-[498px] overflow-hidden"
+                  className="max-h-[498px] max-w-[302px] flex items-center justify-center hover:outline outline-1 outline-green-400"
+                  // max-w-[302px]
                 >
                   <Image
-                    className=" duration-500 hover:scale-[0.9] group-hover:scale-[0.9] hover:outline outline-1 outline-green-400 h-auto w-auto min-h-[497px] max-w-full"
+                    className="duration-500 hover:scale-[0.9] group-hover:scale-[0.9]  max-w-[300px] max-h-[497px] object-contain"
+                    // min-h-[497px]  h-auto w-auto
                     src={imagePath500px + item?.poster_path}
-                    alt="Movie poster"
-                    title="open movie page"
+                    alt="Series poster"
+                    title="open show page"
                     width={300}
                     height={400}
                     // style={{ height: "auto", width: "auto" }}
@@ -53,25 +54,23 @@ export default function TvMapper({
                 </p>
 
                 {item?.first_air_date ? (
-                  // <p>{movie?.release_date.split("-")[0]}</p>
                   <p>{item?.first_air_date}</p>
                 ) : (
                   <p>Unknown</p>
                 )}
-                {/* <p>{movie.release_date.split("-")[0]}</p> */}
 
                 <p>
                   {item.original_language
                     ? new Intl.DisplayNames(["en"], {
                         type: "language",
-                      }).of(item?.original_language)
+                      }).of(item?.original_language || "en")
                     : ""}
                 </p>
                 <p>
                   {item.original_language
                     ? new Intl.DisplayNames(["en"], {
                         type: "region",
-                      }).of(item?.origin_country[0])
+                      }).of(item?.origin_country[0] || "US")
                     : ""}
                 </p>
                 <div className="flex items-center">
@@ -86,7 +85,7 @@ export default function TvMapper({
                     {item?.vote_average.toFixed(1)}
                   </p>
                 </div>
-                <div className="movieLinkDiv w-[80%] bg-black p-1 flex rounded-full">
+                <div className="w-[80%] bg-black p-1 flex rounded-full">
                   <Link
                     href={`/tv/series/${item?.id}`}
                     target="_blank"

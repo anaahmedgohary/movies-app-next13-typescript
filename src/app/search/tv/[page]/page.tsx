@@ -1,7 +1,8 @@
-import { MovieObject } from "@p/assets/types";
+import { TvSeriesObject } from "@p/assets/types";
 
 import { Suspense } from "react";
-import MoviesMapper from "@/app/components/moviesMapper";
+// import MoviesMapper from "@/app/components/moviesMapper";
+import TvMapper from "@/app/components/tvMapper";
 import Pagination from "@/app/components/pagination";
 
 export default async function SearchPage({
@@ -26,18 +27,16 @@ export default async function SearchPage({
     },
   };
   let pagesFound: number = 1;
-  let matchesFound: number = 1;
 
-  const movieSearchResults: MovieObject[] = await fetch(searchUrl, options)
+  const tvSearchResults: TvSeriesObject[] = await fetch(searchUrl, options)
     .then((res) => res.json())
     .then((data) => {
       pagesFound = data?.total_pages || 1;
-      matchesFound = data?.total_results || 1;
       return data?.results;
     })
     .catch((err) => console.log(err));
 
-  const sortedBypopularity = movieSearchResults.sort(
+  const sortedBypopularity = tvSearchResults.sort(
     (a, b) => b.popularity - a.popularity
   );
   const paginationArray = (() => {
@@ -53,7 +52,7 @@ export default async function SearchPage({
   // console.log(colors.green(`${pagesFound}`));
   // console.log(colors.green(`${matchesFound}`));
 
-  if (movieSearchResults.length < 1) {
+  if (tvSearchResults.length < 1) {
     return (
       <>
         <div className=" text-center bg-black w-full h-full m-auto py-20 px-5">
@@ -101,7 +100,7 @@ export default async function SearchPage({
         <Suspense
           fallback={<div className="text-center"> loading Movies...</div>}
         >
-          <MoviesMapper moviesArry={sortedBypopularity} />
+          <TvMapper seriesArray={sortedBypopularity} />
         </Suspense>
       </div>
 
