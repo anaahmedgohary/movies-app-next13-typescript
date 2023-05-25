@@ -3,7 +3,7 @@ import { Roboto_Mono } from "next/font/google";
 const roboto_Mono = Roboto_Mono({ subsets: ["latin"] });
 // import { childrenType } from "types.ts";
 // import { childrenType } from "../../types";
-import { childrenType } from "@/types";
+import { childrenType } from "../../../public/assets/types";
 
 export const metadata = {
   title: "search stars",

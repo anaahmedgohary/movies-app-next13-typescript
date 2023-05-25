@@ -1,6 +1,6 @@
 "use client";
 
-import { childrenType } from "@/types";
+import { childrenType } from "../../../public/assets/types";
 // import axios from "axios";
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
@@ -18,11 +18,9 @@ export default function SearchBar({ children }: childrenType) {
     e.preventDefault();
     // const query = searchValue.toLowerCase().replace(" ", "%20").trim();
     const query = searchValue.toLowerCase().trim().replace(" ", "%20");
-    // setTimeout(() => {
-    //   // return (window.location.href = `http://localhost:8080/search/${query}/1`);
-    //   return (window.location.href = `http://localhost:8080/search/1?query=${query}`);
-    // }, 3000);
-    return (window.location.href = `http://localhost:8080/search/1?query=${query}`);
+
+    // return (window.location.href = `http://localhost:8080/search/1?query=${query}`);
+    return (window.location.href = `/search/1?query=${query}`);
   }
   return (
     <>

@@ -6,7 +6,7 @@ import { Viga, Roboto } from "next/font/google";
 const vigaFont = Viga({ subsets: ["latin"], weight: ["400"] });
 const roboto = Roboto({ subsets: ["latin"], weight: ["400"] });
 // import colors from "colors/safe";
-import { MovieObject } from "@/types";
+import { MovieObject } from "../../../public/assets/types";
 // import SearchBar from "./search";
 // imports //
 

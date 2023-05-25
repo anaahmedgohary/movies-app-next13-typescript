@@ -1,4 +1,4 @@
-import { childrenType } from "@/types";
+import { childrenType } from "../../../../public/assets/types";
 
 export const metadata = {
   title: "Upcoming Movies",

@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import GetMovies from "@/app/components/moviesmap";
-import { MovieObject } from "@/types";
+import { MovieObject } from "../../../public/assets/types";
 
 async function fetchMovies(listurl: string) {
   // const listurl = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.MOVIEDB_API_KEY}&language=en-US&page=1`;

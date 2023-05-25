@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaStar, FaImdb } from "react-icons/fa";
 import { Akaya_Telivigala } from "next/font/google";
-import { MovieObject } from "@/types";
+import { MovieObject } from "../../../public/assets/types";
 
 ///////////
 const akayaTelivigala = Akaya_Telivigala({

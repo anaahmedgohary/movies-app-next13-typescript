@@ -1,6 +1,6 @@
 // import "@/app/assets/styles/movies/style.css";
 import { Inter } from "next/font/google";
-import { childrenType } from "@/types";
+import { childrenType } from "../../../../public/assets/types";
 ///////////
 const inter = Inter({ subsets: ["latin"] });
 

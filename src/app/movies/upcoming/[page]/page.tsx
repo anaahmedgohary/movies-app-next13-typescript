@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Pagination from "@/app/components/pagination";
 import MoviesMapper from "@/app/components/moviesMapper";
-import { MovieObject } from "@/types";
+import { MovieObject } from "../../../../../public/assets/types";
 import colors from "colors/safe";
 
 export default async function MoviesPage({

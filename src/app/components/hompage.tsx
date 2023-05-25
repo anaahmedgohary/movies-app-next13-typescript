@@ -1,22 +1,22 @@
-// "use client";
 // imports
 import { Viga } from "next/font/google";
 const font = Viga({ subsets: ["latin"], weight: ["400"] });
 import Link from "next/link";
 import Image from "next/image";
-import categoriesArr from "@/assets/static-data/categoriesArr";
+// import categoriesArr from "/assets/categoriesArr";
+import categoriesArr from "../../../public/assets/categoriesArr.js";
 import SearchBar from "./search";
 //////////////
-
+// bg-[url('/assets/images/upbig.jpg')]
 export default function Hompage() {
   return (
-    <div className="flex flex-col justify-start min-h-screen bg-gray-600">
+    <div className="lg:px-20 flex flex-col justify-start min-h-screen bg-[url('/assets/images/upbig.jpg')] bg-cover bg-center bg-repeat-x">
       <SearchBar />
-      <div className="movieCategories flex-1 w-full text-center flex flex-wrap gap-5 justify-center items-center py-[100px] px-2">
+      <div className="movieCategories flex-1 w-full text-center flex flex-wrap gap-10 justify-center items-center py-[100px] px-2">
         {categoriesArr.map((item, index) => {
           return (
             <div
-              className="category flex-1 min-w-[300px] max-w-[500px] h-[300px] relative rounded-md overflow-hidden"
+              className="category flex-1 min-w-[320px] max-w-[500px] h-[300px] relative rounded-md overflow-hidden"
               key={index}
             >
               <Image

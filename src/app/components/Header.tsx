@@ -5,11 +5,18 @@ import { useState } from "react";
 import { FaBeer, FaUser } from "react-icons/fa";
 
 export default function HeaderComponent() {
+  const fellowship_of_the_ring = `bg-[url('/assets/images/the_fellowship_of_the_ring.jpeg')]`;
   const [username, setUserName] = useState("Anonymous");
-  const LinkClasses = `min-w-[100px] border py-2 rounded-md duration-300 hover:bg-green-600`;
+  const LinkClasses = `min-w-[100px] border py-2 rounded-md duration-300 hover:bg-green-600 bg-black bg-opacity-50`;
   return (
-    <div>
-      <div className="text-center pb-10 pt-8 px-20 flex flex-wrap gap-5 justify-center items-center bg-gray-950 border-b-2">
+    <div
+      className="text-center bg-center bg-cover bg-repeat-x"
+      style={{
+        backgroundImage:
+          "url('/assets/images/the_fellowship_of_the_ring.jpeg')",
+      }}
+    >
+      <div className="text-center pb-10 pt-8 px-20 flex flex-wrap gap-5 justify-center items-center">
         <Link className={LinkClasses} href="">
           Home
         </Link>

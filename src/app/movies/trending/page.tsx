@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 // import TrendingMovies from "@/app/components/listtrendingmovies";
 import MoviesMapper from "@/app/components/moviesMapper";
-import { MovieObject } from "@/types";
+import { MovieObject } from "../../../../public/assets/types";
 
 export default async function MoviesPage() {
   // const baseUrl = process.env.BASE_URL || "/api";

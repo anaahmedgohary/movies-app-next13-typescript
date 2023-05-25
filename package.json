@@ -5,6 +5,7 @@
   "scripts": {
     "start": "next dev --turbo -p 8080 --show-all",
     "dev": "next dev --turbo -p 8080",
+    "devsl": "next dev",
     "serverssl": "node server.js",
     "build": "next build",
     "productionstart": "next start",

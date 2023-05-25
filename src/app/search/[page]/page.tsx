@@ -1,4 +1,4 @@
-import { MovieObject } from "@/types";
+import { MovieObject } from "../../../../public/assets/types";
 import axios from "axios";
 import colors from "colors/safe";
 import Colors from "colors";
@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import MoviesMapper from "@/app/components/moviesMapper";
 import Pagination from "@/app/components/pagination";
-import SearchBar from "@/app/components/search";
+// import SearchBar from "@/app/components/search";
 // import useSearchParams from "next/navigation";
 ///////////
 
@@ -81,11 +81,9 @@ export default async function SearchPage({
   if (movieSearchResults.length < 1) {
     return (
       <>
-        <SearchBar>
-          <div className=" text-center bg-black w-full h-full m-auto py-20 px-5">
-            <p className=" text-center text-4xl">No results Were Found</p>
-          </div>
-        </SearchBar>
+        <div className=" text-center bg-black w-full h-full m-auto py-20 px-5">
+          <p className=" text-center text-4xl">No results Were Found</p>
+        </div>
       </>
     );
   }
