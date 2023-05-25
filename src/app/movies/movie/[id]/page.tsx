@@ -1,7 +1,7 @@
 ////////////
 import MovieComponent from "@/app/components/movie-component";
 // import {generateMetadata} from "@/app/components/moviebyid";
-import { MovieObject } from "../../../../public/assets/types";
+import { MovieObject } from "@p/assets/types";
 //////////
 
 async function fetchMovie(movieId: number | string): Promise<MovieObject> {

@@ -1,12 +1,9 @@
-"use client";
+// "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { FaBeer, FaUser } from "react-icons/fa";
+// import { FaBeer, FaUser } from "react-icons/fa";
 
 export default function HeaderComponent() {
-  const fellowship_of_the_ring = `bg-[url('/assets/images/the_fellowship_of_the_ring.jpeg')]`;
-  const [username, setUserName] = useState("Anonymous");
   const LinkClasses = `min-w-[100px] border py-2 rounded-md duration-300 hover:bg-green-600 bg-black bg-opacity-50`;
   return (
     <div
@@ -31,6 +28,9 @@ export default function HeaderComponent() {
         </Link>
         <Link className={LinkClasses} href="/movies/toprated/1">
           Top rated
+        </Link>
+        <Link className={LinkClasses} href="/tv">
+          Tv
         </Link>
       </div>
     </div>
