@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaStar, FaImdb } from "react-icons/fa";
+import { FaImdb } from "react-icons/fa";
 import { Akaya_Telivigala } from "next/font/google";
 import { TvSeriesObject } from "@p/assets/types";
 
@@ -23,6 +23,10 @@ export default function TvSeriesComponent({
       genresArray.push(el.name);
     });
   }
+
+  const imdbSearchLink = `https://www.imdb.com/find/?q=${
+    123 + 123
+  }&ref_=nv_sr_sm`;
 
   return (
     <div className="bg-black pt-10">
@@ -88,7 +92,10 @@ export default function TvSeriesComponent({
           <div className=" py-4 grid items-center justify-start text-center">
             <Link
               prefetch={false}
-              href={`https://www.imdb.com/title/${TvSeriesObj?.imdb_id}/`}
+              href={`https://www.imdb.com/find/?q=${TvSeriesObj.name.replace(
+                " ",
+                "%20"
+              )}&ref_=nv_sr_sm`}
               target="_blank"
               className=" text-center"
             >

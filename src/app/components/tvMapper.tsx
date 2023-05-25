@@ -1,7 +1,7 @@
 // imports
 import Image from "next/image";
 import Link from "next/link";
-import { FaStar, FaImdb } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { Viga, Roboto } from "next/font/google";
 const vigaFont = Viga({ subsets: ["latin"], weight: ["400"] });
 const roboto = Roboto({ subsets: ["latin"], weight: ["400"] });
@@ -64,7 +64,14 @@ export default function TvMapper({
                   {item.original_language
                     ? new Intl.DisplayNames(["en"], {
                         type: "language",
-                      }).of(item.original_language)
+                      }).of(item?.original_language)
+                    : ""}
+                </p>
+                <p>
+                  {item.original_language
+                    ? new Intl.DisplayNames(["en"], {
+                        type: "region",
+                      }).of(item?.origin_country[0])
                     : ""}
                 </p>
                 <div className="flex items-center">

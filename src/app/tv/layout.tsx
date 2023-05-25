@@ -11,7 +11,7 @@ export const metadata = {
 export default function PopularLayout({ children }: childrenType) {
   return (
     <div className="min-h-screen bg-blue-950 pt-8">
-      <SearchBar />
+      <SearchBar searchType="tv" />
       {children}
     </div>
   );

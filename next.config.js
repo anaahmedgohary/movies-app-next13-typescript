@@ -11,7 +11,10 @@ const nextConfig = {
       "image.tmdb.org",
       "images.google.com",
       "compote.slate.com",
+      "www.pexels.com",
       "images.pexels.com",
+      "pexels.com",
+      "media.istockphoto.com",
     ],
   },
 };

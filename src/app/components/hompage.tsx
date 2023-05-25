@@ -3,15 +3,14 @@ import { Viga } from "next/font/google";
 const font = Viga({ subsets: ["latin"], weight: ["400"] });
 import Link from "next/link";
 import Image from "next/image";
-// import categoriesArr from "/assets/categoriesArr";
-import categoriesArr from "../../../public/assets/categoriesArr.js";
+import categoriesArr from "@p/assets/categoriesArr";
 import SearchBar from "./search";
 //////////////
 // bg-[url('/assets/images/upbig.jpg')]
 export default function Hompage() {
   return (
     <div className="lg:px-20 flex flex-col justify-start min-h-screen bg-[url('/assets/images/upbig.jpg')] bg-cover bg-center bg-repeat-x">
-      <SearchBar />
+      <SearchBar searchType="films" />
       <div className="movieCategories flex-1 w-full text-center flex flex-wrap gap-10 justify-center items-center py-[100px] px-2">
         {categoriesArr.map((item, index) => {
           return (

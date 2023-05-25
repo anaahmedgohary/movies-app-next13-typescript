@@ -6,7 +6,13 @@ import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 // import colors from "colors/safe";
 
-export default function SearchBar({ children }: childrenType) {
+export default function SearchBar({
+  children,
+  searchType,
+}: {
+  children?: React.ReactNode;
+  searchType: "tv" | "films";
+}) {
   //   const movieLink = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.MOVIEDB_API_KEY}`;
 
   //   const searchUrl = `https://api.themoviedb.org/3/search/movie?query=god%20father&include_adult=true&language=en-US&page=${
@@ -20,7 +26,7 @@ export default function SearchBar({ children }: childrenType) {
     const query = searchValue.toLowerCase().trim().replace(" ", "%20");
 
     // return (window.location.href = `http://localhost:8080/search/1?query=${query}`);
-    return (window.location.href = `/search/1?query=${query}`);
+    return (window.location.href = `/search/${searchType}/1?query=${query}`);
   }
   return (
     <>
@@ -34,7 +40,9 @@ export default function SearchBar({ children }: childrenType) {
               className="text-center text-lg py-4 mmin-w-[300px] w-full mmax-w-[600px] rounded-full bg-gray-950 bg-opacity-80 focus:bg-opacity-100 border-none outline-none outline-[0px] outline-offset-0 outline-transparent focus:outline-green-400 focus:outline-[1px] ring-1 ring-offset-0"
               onChange={(e) => setSearchValue(e.target.value)}
               value={searchValue}
-              placeholder="Search"
+              placeholder={`${
+                searchType === "films" ? "Search Movies" : "Search Tv"
+              }`}
               type="search"
               name="searchbar"
               id="searchbar"

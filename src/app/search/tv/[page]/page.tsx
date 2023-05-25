@@ -1,26 +1,8 @@
 import { MovieObject } from "@p/assets/types";
-import axios from "axios";
-import colors from "colors/safe";
-import Colors from "colors";
-import Link from "next/link";
+
 import { Suspense } from "react";
 import MoviesMapper from "@/app/components/moviesMapper";
 import Pagination from "@/app/components/pagination";
-// import SearchBar from "@/app/components/search";
-// import useSearchParams from "next/navigation";
-///////////
-
-// async function getSearchResults(link: string):Promise<MovieObject[]> {
-
-//     // let results: {}[] = [];
-//     const options = { method: "GET", headers: { accept: "application/json" } };
-//     const movieSearchResults: MovieObject[] = await fetch(link, options)
-//       .then((res) => res.json())
-//       .then((data) => data?.results)
-//       .catch((err) => console.log(err));
-//     return movieSearchResults;
-
-// }
 
 export default async function SearchPage({
   params,
@@ -33,15 +15,8 @@ export default async function SearchPage({
   console.log(typeof params.page);
   const qParam = searchParams?.query.toString();
   const query = qParam.replace(" ", "%20") || "no";
-  // (searchParams && searchParams?.query.replace(" ", "%20")) || "no";
 
-  // const searchUrl = `https://api.themoviedb.org/3/search/movie?query=god%20father&include_adult=false&language=en-US&page=${
-  //   page || 1
-  // }&api_key=${process.env.MOVIEDB_API_KEY}`;
-
-  const searchUrl = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page}&api_key=${process.env.MOVIEDB_API_KEY}&sort_by=primary_release_date.desc`;
-
-  // const searchResults:MovieObject[] = await getSearchResults(searchUrl);
+  const searchUrl = `https://api.themoviedb.org/3/search/tv?query=${query}&include_adult=false&language=en-US&page=${page}&api_key=${process.env.MOVIEDB_API_KEY}`;
 
   const options = {
     method: "GET",

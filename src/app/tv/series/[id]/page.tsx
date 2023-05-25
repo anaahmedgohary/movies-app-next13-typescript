@@ -49,7 +49,7 @@ export default async function SeriesPage({
   params: { id: number };
 }) {
   const TvSeriesObj: TvSeriesObject = await fetchTvSeriesObj(id);
-  console.log(TvSeriesObj);
+  // console.log(TvSeriesObj);
   if (!TvSeriesObj && typeof window !== "undefined") {
     alert("some error.. please reload");
     return;
