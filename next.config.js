@@ -43,7 +43,8 @@ const nextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'",
+            value:
+              "default-src 'self' www.google-analytics.com https://cdnjs.cloudflare.com https://ka-f.fontawesome.com https://kit.fontawesome.com; script-src 'self' https://kit.fontawesome.com https://ka-f.fontawesome.com https://cdnjs.cloudflare.com  www.google-analytics.com 'unsafe-inline'; base-uri 'self';",
           },
         ],
       },
