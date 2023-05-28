@@ -25,22 +25,21 @@ export default function MoviesMapper({
             // console.log(movie.release_date);
             return (
               <li
-                className=" flex-1 flex flex-col gap-3 justify-center items-center py-5 border-4 bg-gray-900 min-w-[320px] rounded-md group hover:bg-gray-800 overflow-x-hidden"
+                className=" flex-1 flex flex-col gap-3 justify-center items-center py-5 border-4 bg-gray-900 min-w-[320px] rounded-md group hover:bg-gray-800 overflow-hidden"
                 key={movie?.id}
               >
                 <Link
                   href={`/movies/movie/${movie?.id}`}
                   prefetch={false}
-                  className="max-w-full max-h-[498px] overflow-hidden"
+                  className="duration-500 h-[500px] ww-[320px] w-full  overflow-hidden hover:outline outline-1 outline-green-400  object-bottom object-contain border-4 border-black"
                 >
                   <Image
-                    className=" duration-500 hover:scale-[0.9] group-hover:scale-[0.9] hover:outline outline-1 outline-green-400 h-auto w-auto min-h-[497px] max-w-full"
+                    className="duration-500 group-hover:scale-[1.2] m-auto h-full w-auto max-w-full sm:max-w-[480px]"
                     src={imagePath500px + movie?.poster_path}
                     alt="Movie poster"
                     title="open movie page"
                     width={300}
-                    height={400}
-                    // style={{ height: "auto", width: "auto" }}
+                    height={500}
                     loading="lazy"
                     placeholder="blur"
                     blurDataURL={imagePath500px + movie?.poster_path}

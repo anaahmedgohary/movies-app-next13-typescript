@@ -4,5 +4,5 @@ export const metadata = {
   description: "Trending Tv Series Page",
 };
 export default function UserLayout({ children }: childrenType) {
-  return <div>{children}</div>;
+  return <div className="bg-blue-950">{children}</div>;
 }

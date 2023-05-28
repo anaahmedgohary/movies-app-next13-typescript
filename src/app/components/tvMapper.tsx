@@ -30,17 +30,17 @@ export default function TvMapper({
                 <Link
                   href={`/tv/series/${item?.id}`}
                   // prefetch={false}
-                  className="max-h-[498px] max-w-[302px] flex items-center justify-center hover:outline outline-1 outline-green-400"
+                  className="duration-500 h-[500px] ww-[320px] w-full  overflow-hidden hover:outline outline-1 outline-green-400  object-bottom object-contain border-4 border-black"
                   // max-w-[302px]
                 >
                   <Image
-                    className="duration-500 hover:scale-[0.9] group-hover:scale-[0.9]  max-w-[300px] max-h-[497px] object-contain"
+                    className="duration-500 group-hover:scale-[1.2] m-auto h-full w-auto max-w-full sm:max-w-[480px]"
                     // min-h-[497px]  h-auto w-auto
                     src={imagePath500px + item?.poster_path}
                     alt="Series poster"
                     title="open show page"
                     width={300}
-                    height={400}
+                    height={500}
                     // style={{ height: "auto", width: "auto" }}
                     loading="lazy"
                     placeholder="blur"

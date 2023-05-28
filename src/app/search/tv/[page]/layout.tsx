@@ -1,4 +1,4 @@
-import { childrenType } from "../../../public/assets/types";
+import { childrenType } from "@p/assets/types";
 import SearchBar from "@/app/components/search";
 
 ///////////
@@ -10,7 +10,7 @@ export const metadata = {
 export default function PopularLayout({ children }: childrenType) {
   return (
     <div className="min-h-screen bg-blue-950 pt-8">
-      <SearchBar searchType="films" />
+      <SearchBar searchType="tv" />
       {children}
     </div>
   );

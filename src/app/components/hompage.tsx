@@ -9,12 +9,12 @@ import SearchBar from "./search";
 // bg-[url('/assets/images/upbig.jpg')]
 export default function Hompage() {
   return (
-    <div className="lg:px-20 flex flex-col justify-start min-h-screen bg-[url('/assets/images/upbig.jpg')] bg-cover bg-center bg-repeat-x">
-      <div>
-        <h1 className="text-center text-3xl">Movies #1</h1>
+    <div className="flex flex-col justify-start min-h-screen bg-[url('/assets/images/upbig.jpg')] bg-cover bg-center bg-repeat-x">
+      <div className="bg-blue-950 bg-opacity-70 py-8 w-full">
+        <h1 className="text-3xl text-center">Movies #1</h1>
+        <SearchBar searchType="films" />
       </div>
-      <SearchBar searchType="films" />
-      <div className="movieCategories flex-1 w-full text-center flex flex-wrap gap-10 justify-center items-center py-[100px] px-2">
+      <div className="movieCategories flex-1 w-full text-center flex flex-wrap gap-10 justify-center items-center py-[100px] px-2 lg:px-20">
         {categoriesArr.map((item, index) => {
           return (
             <div

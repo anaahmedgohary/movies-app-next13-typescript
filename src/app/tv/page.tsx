@@ -4,14 +4,17 @@ const font = Viga({ subsets: ["latin"], weight: ["400"] });
 import Link from "next/link";
 import Image from "next/image";
 import categoriesArr from "@p/assets/tv-categories";
+import SearchBar from "@/app/components/search";
+
 // import SearchBar from "@/app/components/search";
 //////////////
 // bg-[url('/assets/images/upbig.jpg')]
 export default async function TvCategoriesPage() {
   return (
-    <div className="lg:px-20 flex flex-col justify-start min-h-screen bg-[url('/assets/images/upbig.jpg')] bg-cover bg-center bg-repeat-x">
+    <div className="flex flex-col justify-start min-h-screen">
       {/* <SearchBar searchType="tv" /> */}
-      <div className="movieCategories flex-1 w-full text-center flex flex-wrap gap-10 justify-center items-center py-[100px] px-2">
+
+      <div className="movieCategories flex-1 w-full text-center flex flex-wrap gap-10 justify-center items-center py-[100px] px-2 lg:px-20">
         {categoriesArr.map((item, index) => {
           return (
             <div

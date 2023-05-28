@@ -56,7 +56,9 @@ export default async function SearchPage({
     return (
       <>
         <div className=" text-center bg-black w-full h-full m-auto py-20 px-5">
-          <p className=" text-center text-4xl">No results Were Found</p>
+          <p className=" text-center text-4xl">
+            No results Were Found of: {qParam}
+          </p>
         </div>
       </>
     );
@@ -72,7 +74,7 @@ export default async function SearchPage({
         totalPages={paginationArray}
       >
         <div>
-          <h1 className="text-3xl text-center">Search Results</h1>
+          <h1 className="text-3xl text-center">Search Results for: {qParam}</h1>
         </div>
       </Pagination>
 
