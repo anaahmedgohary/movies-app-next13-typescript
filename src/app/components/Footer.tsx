@@ -11,7 +11,7 @@ export default function FooterComponent() {
         <div>
           <p>MovieNo1</p>
         </div>
-        <Link className={LinkClasses} href="">
+        <Link className={LinkClasses} href="/">
           Home
         </Link>
         <Link className={LinkClasses} href="/movies/popular/1">

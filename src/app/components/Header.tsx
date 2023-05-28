@@ -14,7 +14,7 @@ export default function HeaderComponent() {
       }}
     >
       <div className="text-center pb-10 pt-8 px-20 flex flex-wrap gap-5 justify-center items-center">
-        <Link className={LinkClasses} href="">
+        <Link className={LinkClasses} href="/">
           Home
         </Link>
         <Link className={LinkClasses} href="/movies/popular/1">
