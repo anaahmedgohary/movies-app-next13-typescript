@@ -7,7 +7,8 @@ import HeaderComponent from "./components/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Movies #1",
+  title:
+    "Movies #1 best new movies, popular movies, trending movies and top rated movies",
   description:
     "Movies wep app. best new movies, popular movies, trending movies, top rated movies, search movies, old movies, classic movies, movie details",
 };

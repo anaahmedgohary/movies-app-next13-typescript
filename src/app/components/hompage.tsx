@@ -10,6 +10,9 @@ import SearchBar from "./search";
 export default function Hompage() {
   return (
     <div className="lg:px-20 flex flex-col justify-start min-h-screen bg-[url('/assets/images/upbig.jpg')] bg-cover bg-center bg-repeat-x">
+      <div>
+        <h1 className="text-center text-3xl">Movies #1</h1>
+      </div>
       <SearchBar searchType="films" />
       <div className="movieCategories flex-1 w-full text-center flex flex-wrap gap-10 justify-center items-center py-[100px] px-2">
         {categoriesArr.map((item, index) => {
