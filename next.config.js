@@ -44,7 +44,7 @@ const nextConfig = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self' www.google-analytics.com https://cdnjs.cloudflare.com https://ka-f.fontawesome.com https://kit.fontawesome.com; script-src 'self' https://kit.fontawesome.com https://ka-f.fontawesome.com https://cdnjs.cloudflare.com  www.google-analytics.com 'unsafe-inline'; base-uri 'self';",
+              "default-src 'self' www.google-analytics.com https://cdnjs.cloudflare.com https://ka-f.fontawesome.com https://kit.fontawesome.com; script-src 'self' https://kit.fontawesome.com https://ka-f.fontawesome.com https://cdnjs.cloudflare.com  www.google-analytics.com; style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com www.tailwindcss.com 'unsafe-inline'; base-uri 'self';",
           },
         ],
       },
