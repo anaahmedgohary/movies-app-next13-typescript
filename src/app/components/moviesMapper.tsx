@@ -12,8 +12,10 @@ import { MovieObject } from "../../../public/assets/types";
 
 export default function MoviesMapper({
   moviesArry,
+  moviesCategory,
 }: {
   moviesArry: MovieObject[];
+  moviesCategory?: "popular" | "toprated" | "trending" | "upcoming";
 }) {
   const imagePath500px = "https://image.tmdb.org/t/p/w500/";
 
@@ -29,7 +31,9 @@ export default function MoviesMapper({
                 key={movie?.id}
               >
                 <Link
-                  href={`/movies/movie/${movie?.id}`}
+                  href={`/movies/movie/${movie?.id}${
+                    moviesCategory ? "?moviesCategory=" + moviesCategory : ""
+                  }`}
                   prefetch={false}
                   className="duration-500 h-[500px] ww-[320px] w-full  overflow-hidden hover:outline outline-1 outline-green-400  object-bottom object-contain border-4 border-black"
                 >

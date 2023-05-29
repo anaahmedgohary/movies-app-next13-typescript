@@ -12,8 +12,10 @@ const akayaTelivigala = Akaya_Telivigala({
 
 export default function MovieComponent({
   movieObject,
+  moviesCategory,
 }: {
   movieObject: MovieObject;
+  moviesCategory?: "popular" | "toprated" | "trending" | "upcoming" | "";
 }) {
   //   const imagePath500px = 'https://image.tmdb.org/t/p/w500/'
   const imagePath = "https://image.tmdb.org/t/p/original";
@@ -23,7 +25,35 @@ export default function MovieComponent({
       genresArray.push(el.name);
     });
   }
+  const eightDays = 3600000 * 24 * 8; // 8 days in milliseconds
+  const currentDate = Date.now();
+  const movieDate =
+    new Date(movieObject?.release_date)?.getTime() || Date.now();
+  console.log("movieDate: ", movieDate);
+  console.log("currentDate: ", currentDate);
 
+  const movieYear: number =
+    parseInt(movieObject?.release_date?.split("-")[0]) ||
+    new Date().getFullYear();
+
+  const YTSLink: string = (movieObject.title + "-" + movieYear)
+    .trim()
+    .replace(/\W/g, "-")
+    .replace(/^\W+/, "")
+    .replace(/\W+$/, "")
+    .replace(/-+/g, "-")
+    .toLowerCase();
+  const adjustedTitle: string = " " + movieObject.title;
+  const titleSplitArr: string[] = adjustedTitle.split(" ");
+
+  const searchTerm: string =
+    titleSplitArr.length > 3
+      ? titleSplitArr[titleSplitArr.length - 2] +
+        " " +
+        titleSplitArr[titleSplitArr.length - 1]
+      : movieObject.title;
+  // titleSplitArr.at(-2)
+  const YTSSearch = `https://yts.mx/browse-movies/${searchTerm}/all/all/0/latest/0/all`;
   return (
     <div className="bg-black pt-10">
       <div
@@ -95,16 +125,53 @@ export default function MovieComponent({
 
         <div className="linksDiv px-5 pb-2 bg-black bg-opacity-60 border-t-2">
           <h6 className="py-2 font-bold text-lg text-green-600">Links</h6>
+          {((moviesCategory &&
+            moviesCategory !== "upcoming" &&
+            movieDate < currentDate - eightDays) ||
+            movieDate < currentDate - eightDays ||
+            movieYear < new Date().getFullYear()) && (
+            <div className="pt-4">
+              <p className="text-yellow-400 text-sm">
+                link to download movie * when it&#39; done uploading *
+              </p>
+              <div className="py-1">
+                <Link
+                  prefetch={false}
+                  href={`https://yts.mx/movies/${YTSLink}`}
+                  target="_blank"
+                  className="text-green-400 hover:text-white duration-300 italic text-xl px-2 rounded-full py-1 bg-gray-700 hover:bg-orange-500"
+                  title="see if the movie's ready to download"
+                >
+                  Check or Download Movie
+                </Link>
+              </div>
+              <p className="text-yellow-400 text-sm">
+                if 404 page then movie is not uploaded yet
+              </p>
+            </div>
+          )}
+          <div>
+            <Link
+              prefetch={false}
+              href={YTSSearch}
+              target="_blank"
+              className="hover:text-green-400 italic"
+            >
+              search for Movie Download
+            </Link>
+          </div>
           <div className=" py-4 grid items-center justify-start text-center">
             <Link
               prefetch={false}
               href={`https://www.imdb.com/title/${movieObject?.imdb_id}/`}
               target="_blank"
               className=" text-center"
+              title="movies's page on IMDB"
             >
               <FaImdb className=" text-6xl hover:text-green-400" />
             </Link>
           </div>
+
           {movieObject?.homepage && (
             <div>
               <Link

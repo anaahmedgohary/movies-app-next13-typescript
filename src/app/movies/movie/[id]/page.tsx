@@ -18,7 +18,6 @@ async function fetchMovie(movieId: number | string): Promise<MovieObject> {
       console.log(err);
       return false;
     });
-  // console.log("response: ", response);
   return response;
 }
 
@@ -40,9 +39,16 @@ export async function generateMetadata({
 
 export default async function MoviePage({
   params: { id },
+  searchParams,
 }: {
   params: { id: number };
+  searchParams?: {
+    moviesCategory: "popular" | "toprated" | "trending" | "upcoming";
+    [key: string]: string;
+  };
 }) {
+  const moviesCategory: "popular" | "toprated" | "trending" | "upcoming" | "" =
+    searchParams?.moviesCategory || "";
   const movieObject: MovieObject = await fetchMovie(id);
   if (!movieObject && typeof window !== "undefined") {
     alert("some error.. please reload");
@@ -51,7 +57,10 @@ export default async function MoviePage({
 
   return (
     <div>
-      <MovieComponent movieObject={movieObject} />
+      <MovieComponent
+        movieObject={movieObject}
+        moviesCategory={moviesCategory}
+      />
     </div>
   );
 }

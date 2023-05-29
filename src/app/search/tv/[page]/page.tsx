@@ -13,7 +13,6 @@ export default async function SearchPage({
   searchParams: { [key: string]: string };
 }) {
   const page = params.page;
-  console.log(typeof params.page);
   const qParam = searchParams?.query.toString();
   const query = qParam.replace(" ", "%20") || "no";
 

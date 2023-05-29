@@ -52,7 +52,7 @@ export default async function MoviesPage({
             fallback={<div className="text-center"> loading Movies...</div>}
           >
             {/* <MoviesMap url={listurl} /> */}
-            <MoviesMapper moviesArry={moviesArray} />
+            <MoviesMapper moviesArry={moviesArray} moviesCategory='toprated' />
           </Suspense>
         </div>
         <Pagination

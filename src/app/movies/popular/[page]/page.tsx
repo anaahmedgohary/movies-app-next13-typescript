@@ -11,7 +11,7 @@ export default async function MoviesPage({
 }: {
   params: { page: string };
 }) {
-  const baseUrl = process.env.BASE_URL || "/api";
+  // const baseUrl = process.env.BASE_URL || "/api";
   const listurl = `https://api.themoviedb.org/3/movie/popular?page=${page}&api_key=${process.env.MOVIEDB_API_KEY}`;
   // &sort_by=popularity.asc
   const response: MovieObject[] = await fetch(listurl, {
@@ -54,7 +54,7 @@ export default async function MoviesPage({
           <Suspense
             fallback={<div className="text-center"> loading Movies...</div>}
           >
-            <MoviesMapper moviesArry={moviesArray} />
+            <MoviesMapper moviesArry={moviesArray} moviesCategory='popular' />
           </Suspense>
         </div>
         <Pagination

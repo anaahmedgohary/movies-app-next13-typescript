@@ -10,12 +10,18 @@ export default async function MoviesPage({
   params: { page: string };
 }) {
   // const baseUrl = process.env.BASE_URL || "/api";
+  const dateNow = new Date();
+  // dateNow.setHours(dateNow.getHours()+48)
+  const minDate = dateNow.toISOString().slice(0, 10);
+  const newDate = new Date();
+  newDate.setFullYear(newDate.getFullYear() + 2);
+  const maxDate = newDate.toISOString().slice(0, 10);
 
-  const listurl = `https://api.themoviedb.org/3/movie/upcoming?page=${page}&api_key=${process.env.MOVIEDB_API_KEY}`;
-  // &language=en-US
-  // revalidate: 60 * 60 * 48,
+  const discoverURL = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_release_type=3&primary_release_date.gte=${minDate}&primary_release_date.lte=${maxDate}&api_key=${process.env.MOVIEDB_API_KEY}`;
 
-  const response = await fetch(listurl, {
+  // const listurl = `https://api.themoviedb.org/3/movie/upcoming?page=${page}&api_key=${process.env.MOVIEDB_API_KEY}`;
+
+  const response = await fetch(discoverURL, {
     next: {
       revalidate: 60 * 60 * 24,
     },
@@ -73,7 +79,7 @@ export default async function MoviesPage({
             fallback={<div className="text-center"> loading Movies...</div>}
           >
             {/* <MoviesMap url={listurl} /> */}
-            <MoviesMapper moviesArry={moviesArray} />
+            <MoviesMapper moviesArry={moviesArray} moviesCategory="upcoming" />
           </Suspense>
         </div>
         <Pagination

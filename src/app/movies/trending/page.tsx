@@ -5,7 +5,12 @@ import { MovieObject } from "../../../../public/assets/types";
 
 export default async function MoviesPage() {
   // const baseUrl = process.env.BASE_URL || "/api";
+  const maxDate = new Date().toISOString().slice(0, 10);
+  //
+  const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&primary_release_date.gte=2023-05-29&primary_release_date.lte=${maxDate}&sort_by=popularity.desc`;
+  //
   const listurl = `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.MOVIEDB_API_KEY}&language=en-US`;
+  // &with_original_language=en
 
   const response = await fetch(listurl, {
     next: {
@@ -31,7 +36,7 @@ export default async function MoviesPage() {
         fallback={<div className="text-center"> loading Movies...</div>}
       >
         {/* <MoviesMap url={listurl} /> */}
-        <MoviesMapper moviesArry={moviesArray} />
+        <MoviesMapper moviesArry={moviesArray} moviesCategory="trending" />
       </Suspense>
     </div>
   );
