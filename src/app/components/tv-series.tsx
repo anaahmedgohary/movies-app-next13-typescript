@@ -29,14 +29,14 @@ export default function TvSeriesComponent({
   }&ref_=nv_sr_sm`;
 
   return (
-    <div className="bg-black pt-10">
+    <div className="bg-black pt-1">
       <div
         style={{
           backgroundImage: `url(${imagePath + TvSeriesObj?.backdrop_path})`,
         }}
-        className="bg-cover bg-center bg-black bg-opacity-80 bg-blend-multiply"
+        className="bg-cover bg-center bg-black bg-opacity-40 bg-blend-multiply"
       >
-        <div className=" text-center py-10 bg-slate-950 bg-opacity-20">
+        <div className=" text-center py-10 bg-black bg-opacity-80">
           <h1 className="text-6xl text-green-200">{TvSeriesObj?.name}</h1>
         </div>
         <div className="flex flex-wrap items-center gap-3 py-8 px-1">
@@ -154,7 +154,7 @@ export default function TvSeriesComponent({
           </div>
         </div>
 
-        <div className="linksDiv px-5 pb-2 bg-black bg-opacity-60 border-t-2">
+        <div className="linksDiv px-5 pb-10 bg-black bg-opacity-60 border-t-2">
           <h6 className="py-2 font-bold text-lg text-green-600">Links</h6>
           <div className=" py-4 grid items-center justify-start text-center">
             <Link

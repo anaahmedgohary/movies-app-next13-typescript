@@ -29,8 +29,6 @@ export default function MovieComponent({
   const currentDate = Date.now();
   const movieDate =
     new Date(movieObject?.release_date)?.getTime() || Date.now();
-  console.log("movieDate: ", movieDate);
-  console.log("currentDate: ", currentDate);
 
   const movieYear: number =
     parseInt(movieObject?.release_date?.split("-")[0]) ||
@@ -55,14 +53,14 @@ export default function MovieComponent({
   // titleSplitArr.at(-2)
   const YTSSearch = `https://yts.mx/browse-movies/${searchTerm}/all/all/0/latest/0/all`;
   return (
-    <div className="bg-black pt-10">
+    <div className="bg-black pt-1">
       <div
         style={{
           backgroundImage: `url(${imagePath + movieObject?.backdrop_path})`,
         }}
-        className="movie_container bg-cover bg-center bg-black bg-opacity-80 bg-blend-multiply"
+        className="movie_container bg-cover bg-center bg-black bg-opacity-40 bg-blend-multiply"
       >
-        <div className=" text-center py-10 bg-slate-950 bg-opacity-20">
+        <div className=" text-center py-10 bg-black bg-opacity-80">
           <h1 className="text-6xl text-green-200">{movieObject?.title}</h1>
         </div>
         <div className="flex flex-wrap items-center gap-3 py-8 px-1">
@@ -123,7 +121,7 @@ export default function MovieComponent({
           </div>
         </div>
 
-        <div className="linksDiv px-5 pb-2 bg-black bg-opacity-60 border-t-2">
+        <div className="linksDiv px-5 pb-10 bg-black bg-opacity-60 border-t-2">
           <h6 className="py-2 font-bold text-lg text-green-600">Links</h6>
           {((moviesCategory &&
             moviesCategory !== "upcoming" &&

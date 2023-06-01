@@ -1,23 +1,26 @@
 ////////////
 import MovieComponent from "@/app/components/movie-component";
-// import {generateMetadata} from "@/app/components/moviebyid";
 import { MovieObject } from "@p/assets/types";
+// import colors from "colors/safe";
+import NotFound from "@p/assets/not-found";
 //////////
 
 async function fetchMovie(movieId: number | string): Promise<MovieObject> {
   const movieLink = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.MOVIEDB_API_KEY}`;
 
-  const response: MovieObject = await fetch(movieLink, {
+  const response = await fetch(movieLink, {
     next: {
       revalidate: 60 * 60 * 24,
     },
-  })
-    .then((res) => res.json())
-    .then((json) => json)
-    .catch((err) => {
-      console.log(err);
-      return false;
-    });
+  }).then(async (res) => {
+    if (!res.ok) {
+      let json = (await res.json()) || "undefined res body";
+      console.log("!res.ok: ", json);
+      // console.log(colors.red(json));
+      throw new Error(`!res.ok & status: ${res.status}`);
+    }
+    return res.json();
+  });
   return response;
 }
 
@@ -26,33 +29,35 @@ export async function generateMetadata({
 }: {
   params: { id: number | string };
 }) {
-  const movieObject: MovieObject = await fetchMovie(id);
-  if (!movieObject && typeof window !== "undefined") {
-    alert("some error.. please reload");
-    return;
+  // let movieObject: MovieObject
+  try {
+    const movieObject = await fetchMovie(id);
+    return {
+      title: `${movieObject?.title}`,
+      description: `${movieObject?.tagline} From ${movieObject?.title}`,
+    };
+  } catch (error) {
+    console.log("error: ", error);
+    // console.log(colors.red(`${error}`));
   }
-  return {
-    title: `Movie: ${movieObject?.title}`,
-    description: `${movieObject?.tagline} From ${movieObject?.title}`,
-  };
 }
 
 export default async function MoviePage({
   params: { id },
   searchParams,
 }: {
-  params: { id: number };
+  params: { id: string };
   searchParams?: {
     moviesCategory: "popular" | "toprated" | "trending" | "upcoming";
-    [key: string]: string;
+    [key: string]: string | number;
   };
 }) {
-  const moviesCategory: "popular" | "toprated" | "trending" | "upcoming" | "" =
-    searchParams?.moviesCategory || "";
-  const movieObject: MovieObject = await fetchMovie(id);
-  if (!movieObject && typeof window !== "undefined") {
-    alert("some error.. please reload");
-    return;
+  const moviesCategory = searchParams?.moviesCategory || "";
+  let movieObject;
+  try {
+    movieObject = await fetchMovie(id);
+  } catch (error) {
+    return <NotFound />;
   }
 
   return (
