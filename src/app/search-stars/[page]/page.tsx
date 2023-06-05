@@ -1,8 +1,10 @@
-import { MovieObject } from "@p/assets/types";
+import { MovieObject, SearchResultsArr } from "@p/assets/types";
 import Link from "next/link";
 import { Suspense } from "react";
 import MoviesMapper from "@/app/components/moviesMapper";
+import SearchMapper from "@/app/components/search-mapper";
 import Pagination from "@/app/components/pagination";
+import colors from "colors/safe";
 // import SearchBar from "@/app/components/search";
 // import useSearchParams from "next/navigation";
 ///////////
@@ -31,7 +33,9 @@ export default async function SearchPage({
   const qParam = searchParams?.query.toString();
   const query = qParam.replace(" ", "%20") || "no";
 
-  const searchUrl = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page}&api_key=${process.env.MOVIEDB_API_KEY}&sort_by=primary_release_date.desc`;
+  const searchUrl0 = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page}&api_key=${process.env.MOVIEDB_API_KEY}&sort_by=primary_release_date.desc`;
+  //////////////
+  const searchUrl = `https://api.themoviedb.org/3/search/multi?query=${query}&include_adult=false&language=en-US&page=${page}&api_key=${process.env.MOVIEDB_API_KEY}`;
 
   const options = {
     method: "GET",
@@ -41,20 +45,23 @@ export default async function SearchPage({
     },
   };
   let pagesFound: number = 1;
-  let matchesFound: number = 1;
+  // let matchesFound: number = 1;
 
-  const movieSearchResults: MovieObject[] = await fetch(searchUrl, options)
+  const movieSearchResults: SearchResultsArr = await fetch(searchUrl, options)
     .then((res) => res.json())
     .then((data) => {
-      pagesFound = data?.total_pages || 1;
-      matchesFound = data?.total_results || 1;
+      console.log(colors.green(data));
+      if (data?.total_pages > 0) {
+        pagesFound = data?.total_pages < 10 ? data?.total_pages : 10;
+      }
+      // matchesFound = data?.total_results || 1;
       return data?.results;
     })
     .catch((err) => console.log(err));
 
-  const sortedBypopularity = movieSearchResults.sort(
-    (a, b) => b.popularity - a.popularity
-  );
+  // const sortedBypopularity = movieSearchResults.sort(
+  //   (a, b) => b.popularity - a.popularity
+  // );
   const paginationArray = (() => {
     let first = 0;
     let arr = [];
@@ -68,7 +75,7 @@ export default async function SearchPage({
   // console.log(colors.green(`${pagesFound}`));
   // console.log(colors.green(`${matchesFound}`));
 
-  if (movieSearchResults.length < 1) {
+  if (!movieSearchResults || movieSearchResults.length < 1) {
     return (
       <>
         <div className=" text-center bg-black w-full h-full m-auto py-20 px-5">
@@ -83,7 +90,7 @@ export default async function SearchPage({
   return (
     <div className="pt-8">
       <Pagination
-        category={"search/films"}
+        category={"search-stars"}
         page={page}
         padding={"pt-8 pb-14"}
         queryParams={`?query=${query}`}
@@ -94,36 +101,17 @@ export default async function SearchPage({
         </div>
       </Pagination>
 
-      {/* <div>
-        {searchResults &&
-          searchResults.map((item, index) => {
-            return (
-              <div key={index} className="text-center">
-                <div>{item.title}</div>
-                <div>{item.id}</div>
-                <div>
-                  <Link
-                    href={`/movies/${item.id}`}
-                    target="_blank"
-                    prefetch={false}
-                  >
-                    View
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
-      </div> */}
       <div className="e text-center bg-blue-950">
         <Suspense
           fallback={<div className="text-center"> loading Movies...</div>}
         >
-          <MoviesMapper moviesArry={sortedBypopularity} />
+          {/* <MoviesMapper moviesArry={movieSearchResults} /> */}
+          <SearchMapper resultsArr={movieSearchResults} />
         </Suspense>
       </div>
 
       <Pagination
-        category={"search/films"}
+        category={"search-stars"}
         page={page}
         padding={"pt-8 pb-14"}
         queryParams={`?query=${query}`}

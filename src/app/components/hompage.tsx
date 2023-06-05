@@ -12,7 +12,7 @@ export default function Hompage() {
     <div className="flex flex-col justify-start min-h-screen bg-[url('/assets/images/upbig.jpg')] bg-cover bg-center bg-repeat-x">
       <div className="bg-blue-950 bg-opacity-70 py-8 w-full">
         <h1 className="text-3xl text-center">Movies #1</h1>
-        <SearchBar searchType="films" />
+        <SearchBar searchType="multi" />
       </div>
       <div className="movieCategories flex-1 w-full text-center flex flex-wrap gap-10 justify-center items-center py-[100px] px-2 lg:px-20">
         {categoriesArr.map((item, index) => {

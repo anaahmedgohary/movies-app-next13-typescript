@@ -220,3 +220,37 @@ export interface SpokenLanguage {
   iso_639_1: string;
   name: string;
 }
+
+/// person
+export type IndustryPerson = {
+  adult: boolean;
+  id: number;
+  name: string;
+  original_name: string;
+  media_type: string;
+  popularity: number;
+  gender: number;
+  known_for_department: string;
+  profile_path: string;
+  known_for: string[];
+};
+export type Actor = {
+  adult: boolean;
+  also_known_as: string[];
+  biography: string;
+  birthday: string;
+  deathday: string | null;
+  gender: number;
+  homepage: null;
+  id: number;
+  imdb_id: string;
+  known_for_department: string;
+  name: string;
+  place_of_birth: string;
+  popularity: number;
+  profile_path: string;
+};
+
+export type SearchResultsArr = Array<
+  MovieObject & IndustryPerson & TvSeriesObject
+>;
