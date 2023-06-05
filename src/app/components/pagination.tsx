@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
 //////////
 
-export default function Pagination({
+export default function SegmentPagination({
   children,
   category,
   page,
@@ -18,8 +19,38 @@ export default function Pagination({
   queryParams?: string;
   totalPages?: number[];
 }) {
-  const pagesArray = totalPages || [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const pagesArray =
+    totalPages ||
+    (() => {
+      let f = 0;
+      let arr = [];
+      while (f < 30) {
+        f++;
+        arr.push(f);
+      }
+      return arr;
+    })();
+  const segmentsArr: Array<number[]> = [];
+  function segmentation(pagesArray: number[]) {
+    let i = 0;
+    while (pagesArray.length >= i + 10) {
+      let seg = pagesArray.slice(i, i + 10);
+      segmentsArr.push(seg);
+      i += 10;
+    }
+    if (i < pagesArray.length) {
+      let lastSeg = pagesArray.slice(i);
+      segmentsArr.push(lastSeg);
+    }
+  }
+  segmentation(pagesArray);
   const [currentPage, setCurrentPage] = useState(parseInt(page));
+
+  const initialSegmentIndex = segmentsArr.findIndex((item) => {
+    return item.includes(currentPage);
+  });
+  const [segmentIndex, setSegmentIndex] = useState(initialSegmentIndex);
+  const currentSegment = segmentsArr[segmentIndex];
 
   //   console.log(page);
   return (
@@ -30,10 +61,10 @@ export default function Pagination({
       </div> */}
       <div className={padding}>
         <ul className="flex flex-wrap gap-3 justify-center items-center px-5">
-          {pagesArray.map((item, index) => {
+          {currentSegment.map((item, i) => {
             return (
               <li
-                key={index}
+                key={i}
                 className=" bg-gray-900 shadow-sm shadow-black drop-shadow-md border border-black border-opacity-40 rounded-md text-xl flex"
               >
                 <Link
@@ -50,6 +81,34 @@ export default function Pagination({
             );
           })}
         </ul>
+        <div className="text-center mt-2 py-4 text-3xl flex justify-center content-center gap-8">
+          <button
+            className={`previous duration-100 ${
+              segmentIndex > 0
+                ? "hover:text-green-500"
+                : "pointer-events-none opacity-60"
+            } `}
+            onClick={() => {
+              setSegmentIndex((prev) => (prev - 1 >= 0 ? prev - 1 : prev));
+            }}
+          >
+            <FaChevronCircleLeft />
+          </button>
+          <button
+            className={`next duration-100 ${
+              segmentIndex + 1 < segmentsArr.length
+                ? "hover:text-green-500"
+                : "pointer-events-none opacity-60"
+            }`}
+            onClick={() => {
+              setSegmentIndex((prev) =>
+                prev + 1 < segmentsArr.length ? prev + 1 : prev
+              );
+            }}
+          >
+            <FaChevronCircleRight />
+          </button>
+        </div>
       </div>
     </>
   );

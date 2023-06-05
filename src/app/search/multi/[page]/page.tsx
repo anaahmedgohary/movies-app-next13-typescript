@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import MoviesMapper from "@/app/components/moviesMapper";
 import SearchMapper from "@/app/components/search-mapper";
 import Pagination from "@/app/components/pagination";
+// import SegmentPagination from "@/app/components/pagination-tv";
 import colors from "colors/safe";
 // import SearchBar from "@/app/components/search";
 // import useSearchParams from "next/navigation";
@@ -29,11 +30,8 @@ export default async function SearchPage({
   searchParams: { [key: string]: string };
 }) {
   const page = params.page;
-  console.log(typeof params.page);
   const qParam = searchParams?.query.toString();
   const query = qParam.replace(" ", "%20") || "no";
-
-  const searchUrl0 = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page}&api_key=${process.env.MOVIEDB_API_KEY}&sort_by=primary_release_date.desc`;
   //////////////
   const searchUrl = `https://api.themoviedb.org/3/search/multi?query=${query}&include_adult=false&language=en-US&page=${page}&api_key=${process.env.MOVIEDB_API_KEY}`;
 
@@ -50,9 +48,9 @@ export default async function SearchPage({
   const movieSearchResults: SearchResultsArr = await fetch(searchUrl, options)
     .then((res) => res.json())
     .then((data) => {
-      console.log(colors.green(data));
       if (data?.total_pages > 0) {
-        pagesFound = data?.total_pages < 10 ? data?.total_pages : 10;
+        // pagesFound = data?.total_pages < 10 ? data?.total_pages : 10;
+        pagesFound = data?.total_pages || 1;
       }
       // matchesFound = data?.total_results || 1;
       return data?.results;
@@ -69,11 +67,9 @@ export default async function SearchPage({
       first++;
       arr.push(first);
     }
+    console.log("arr: ", arr);
     return arr;
   })();
-
-  // console.log(colors.green(`${pagesFound}`));
-  // console.log(colors.green(`${matchesFound}`));
 
   if (!movieSearchResults || movieSearchResults.length < 1) {
     return (

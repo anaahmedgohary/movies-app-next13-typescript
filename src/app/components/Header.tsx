@@ -4,16 +4,16 @@ import Link from "next/link";
 // import { FaBeer, FaUser } from "react-icons/fa";
 
 export default function HeaderComponent() {
-  const LinkClasses = `min-w-[100px] border py-2 rounded-md duration-300 hover:bg-green-600 bg-black bg-opacity-50`;
+  const LinkClasses = `min-w-[100px] border py-2 rounded-md duration-300 hover:bg-green-600 bg-black bg-opacity-70`;
   return (
     <div
-      className="text-center bg-center bg-cover bg-repeat-x"
+      className="text-center min-h-[400px] bg-center bg-cover bg-repeat-x flex flex-col"
       style={{
         backgroundImage:
           "url('/assets/images/the_fellowship_of_the_ring.jpeg')",
       }}
     >
-      <div className="text-center pb-10 pt-8 px-20 flex flex-wrap gap-5 justify-center items-center">
+      <div className="flex-1 text-center pb-4 px-[4%] flex flex-wrap gap-x-4 gap-y-3 justify-center content-end ">
         <Link className={LinkClasses} href="/">
           Home
         </Link>

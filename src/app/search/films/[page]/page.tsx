@@ -7,18 +7,6 @@ import Pagination from "@/app/components/pagination";
 // import useSearchParams from "next/navigation";
 ///////////
 
-// async function getSearchResults(link: string):Promise<MovieObject[]> {
-
-//     // let results: {}[] = [];
-//     const options = { method: "GET", headers: { accept: "application/json" } };
-//     const movieSearchResults: MovieObject[] = await fetch(link, options)
-//       .then((res) => res.json())
-//       .then((data) => data?.results)
-//       .catch((err) => console.log(err));
-//     return movieSearchResults;
-
-// }
-
 export default async function SearchPage({
   params,
   searchParams,
@@ -27,7 +15,6 @@ export default async function SearchPage({
   searchParams: { [key: string]: string };
 }) {
   const page = params.page;
-  console.log(typeof params.page);
   const qParam = searchParams?.query.toString();
   const query = qParam.replace(" ", "%20") || "no";
 
@@ -64,9 +51,6 @@ export default async function SearchPage({
     }
     return arr;
   })();
-
-  // console.log(colors.green(`${pagesFound}`));
-  // console.log(colors.green(`${matchesFound}`));
 
   if (movieSearchResults.length < 1) {
     return (

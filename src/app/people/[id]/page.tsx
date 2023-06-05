@@ -47,7 +47,6 @@ export default async function SeriesPage({
   params: { id: number };
 }) {
   const personObj: Actor = await fetchpersonObj(id);
-  // console.log(personObj);
   if (!personObj) {
     return <div>Some Error</div>;
   }

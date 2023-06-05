@@ -1,23 +1,16 @@
-import { Roboto_Mono } from "next/font/google";
-
-const roboto_Mono = Roboto_Mono({ subsets: ["latin"] });
-// import { childrenType } from "types.ts";
-// import { childrenType } from "../../types";
 import { childrenType } from "@p/assets/types";
 import SearchBar from "@/app/components/search";
 
 export const metadata = {
-  title: "search All",
-  description: "search All",
+  title: "Search All",
+  description:
+    "Search all categories like movies, tv, actors and directors etc.",
 };
-
-// type childrenType = {
-//   children: React.ReactNode;
-// };
 
 export default function RootLayout({ children }: childrenType) {
   return (
-    <div className={roboto_Mono.className}>
+    <div className={`min-h-screen bg-blue-950 pt-8`}>
+      <h1 className="text-center text-3xl">Search All</h1>
       <SearchBar searchType="multi" />
       {children}
     </div>

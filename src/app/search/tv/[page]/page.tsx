@@ -48,9 +48,6 @@ export default async function SearchPage({
     return arr;
   })();
 
-  // console.log(colors.green(`${pagesFound}`));
-  // console.log(colors.green(`${matchesFound}`));
-
   if (tvSearchResults.length < 1) {
     return (
       <>
