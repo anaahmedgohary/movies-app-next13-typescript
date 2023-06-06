@@ -1,9 +1,9 @@
 import { Suspense } from "react";
-import colors from "colors/safe";
+// import colors from "colors/safe";
 // import TopRatedMovies from "@/app/components/listtopratedmovies";
 import MoviesMapper from "@/app/components/moviesMapper";
 import Pagination from "@/app/components/pagination";
-import { MovieObject } from "../../../../../public/assets/types";
+import { MovieObject } from "@p/assets/types";
 ///////////////////
 
 export default async function MoviesPage({
@@ -54,7 +54,7 @@ export default async function MoviesPage({
           <Suspense
             fallback={<div className="text-center"> loading Movies...</div>}
           >
-            <MoviesMapper moviesArry={moviesArray} moviesCategory='popular' />
+            <MoviesMapper moviesArry={moviesArray} moviesCategory="popular" />
           </Suspense>
         </div>
         <Pagination
