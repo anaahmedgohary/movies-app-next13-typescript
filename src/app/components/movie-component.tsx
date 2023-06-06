@@ -3,8 +3,11 @@ import Link from "next/link";
 import { FaStar, FaImdb } from "react-icons/fa";
 import { Akaya_Telivigala } from "next/font/google";
 import { MovieObject } from "../../../public/assets/types";
+import TrailerYouTube from "./video-comp";
+// import { Suspense } from "react";
 
 ///////////
+
 const akayaTelivigala = Akaya_Telivigala({
   weight: ["400"],
   subsets: ["latin"],
@@ -13,9 +16,11 @@ const akayaTelivigala = Akaya_Telivigala({
 export default function MovieComponent({
   movieObject,
   moviesCategory,
+  movieTrailerSrc,
 }: {
   movieObject: MovieObject;
   moviesCategory?: "popular" | "toprated" | "trending" | "upcoming" | "";
+  movieTrailerSrc?: string | null;
 }) {
   //   const imagePath500px = 'https://image.tmdb.org/t/p/w500/'
   const imagePath = "https://image.tmdb.org/t/p/original";
@@ -63,7 +68,7 @@ export default function MovieComponent({
         <div className=" text-center py-10 bg-black bg-opacity-80">
           <h1 className="text-6xl text-green-200">{movieObject?.title}</h1>
         </div>
-        <div className="flex flex-wrap items-center gap-3 py-8 px-1">
+        <div className="flex flex-wrap justify-center sm:justify-start content-center items-center gap-3 py-8 px-2">
           <Image
             src={imagePath + movieObject?.poster_path}
             alt="poster"
@@ -74,7 +79,7 @@ export default function MovieComponent({
             blurDataURL={imagePath + movieObject?.poster_path}
             priority
           />
-          <div className="nameAndType px-4">
+          <div className="nameAndType px-4 py-4 rounded-lg bg-black bg-opacity-60">
             <p>{movieObject?.title}</p>
             <p>
               Language:{" "}
@@ -84,6 +89,16 @@ export default function MovieComponent({
             </p>
             <p className="opacity-80 text-gray-400">Movie</p>
           </div>
+          {movieTrailerSrc ? (
+            <div
+              className="flex flex-1 min-w-[330px] justify-end"
+              title="Play Trailer"
+            >
+              <TrailerYouTube videoId={movieTrailerSrc} />
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div className="overviewDiv px-5 bg-black bg-opacity-60">
           <div className="border-b-2 py-6 flex flex-col gap-2">
@@ -170,11 +185,11 @@ export default function MovieComponent({
             </Link>
           </div>
 
-          {movieObject?.homepage && (
+          {movieObject.homepage && (
             <div>
               <Link
                 prefetch={false}
-                href={movieObject?.homepage}
+                href={movieObject.homepage}
                 target="_blank"
                 className="hover:text-green-400 italic"
               >

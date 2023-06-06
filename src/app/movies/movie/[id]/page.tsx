@@ -1,12 +1,12 @@
 ////////////
 import MovieComponent from "@/app/components/movie-component";
 import { MovieObject } from "@p/assets/types";
-// import colors from "colors/safe";
+import colors from "colors/safe";
 import NotFound from "@p/assets/not-found";
 //////////
 
 async function fetchMovie(movieId: number | string): Promise<MovieObject> {
-  const movieLink = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.MOVIEDB_API_KEY}`;
+  const movieLink = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.MOVIEDB_API_KEY}&append_to_response=videos`;
 
   const response = await fetch(movieLink, {
     next: {
@@ -53,10 +53,19 @@ export default async function MoviePage({
   };
 }) {
   const moviesCategory = searchParams?.moviesCategory || "";
-  let movieObject;
+  let trailerLink: string | null;
+  let movieObject: MovieObject;
   try {
     movieObject = await fetchMovie(id);
+    trailerLink =
+      movieObject?.videos?.results?.find((el) => el.site === "YouTube")?.key ||
+      movieObject?.videos?.results[0]?.key ||
+      null;
+    // console.log("trailerLink: ", colors.green(trailerLink));
+
+    // movie-trailer
   } catch (error) {
+    console.log("errrrrrrrrrror: ", colors.green(`${error}`));
     return <NotFound />;
   }
 
@@ -65,6 +74,7 @@ export default async function MoviePage({
       <MovieComponent
         movieObject={movieObject}
         moviesCategory={moviesCategory}
+        movieTrailerSrc={trailerLink}
       />
     </div>
   );

@@ -28,7 +28,20 @@ export type MovieObjectold = {
   homepage?: string;
   imdb_id?: string;
   budget?: number;
+  videos: VideosInter;
 };
+
+export interface VideosInter {
+  results: {
+    name: string;
+    key: string;
+    site: string | "YouTube";
+    type: string;
+    official: false;
+    published_at: string;
+    id: string;
+  }[];
+}
 
 export interface MovieObject {
   media_type: string;
@@ -59,6 +72,7 @@ export interface MovieObject {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  videos: VideosInter;
 }
 
 export interface BelongsToCollection {
