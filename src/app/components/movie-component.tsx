@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaStar, FaImdb } from "react-icons/fa";
+import { FaImdb } from "react-icons/fa";
 import { Akaya_Telivigala } from "next/font/google";
 import { MovieObject } from "../../../public/assets/types";
 import TrailerYouTube from "./video-comp";

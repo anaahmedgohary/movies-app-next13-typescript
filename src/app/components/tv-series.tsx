@@ -50,7 +50,7 @@ export default function TvSeriesComponent({
             blurDataURL={imagePath + TvSeriesObj?.poster_path}
             priority
           />
-          <div className="nameAndType px-4">
+          <div className="nameAndType px-4 py-4 rounded-lg bg-black bg-opacity-60">
             <p>{TvSeriesObj?.name}</p>
             <p>
               Language:{" "}
