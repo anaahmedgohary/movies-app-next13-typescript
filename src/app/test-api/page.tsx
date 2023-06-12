@@ -8,7 +8,9 @@ export default async function TestApi() {
   //   const theHi = await fetch(`http://localhost:8080/api/apiroutes/sayhi`);
   const theHi = await fetch(
     `${
-      process.env.NODE_ENV === "development" ? "http://localhost:8080" : baseUrl
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:8080/api"
+        : baseUrl
     }/apiroutes/sayhi`
   );
   // http://localhost:8080
