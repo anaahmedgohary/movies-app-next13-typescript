@@ -1,6 +1,6 @@
 // "use client"
 
-export default async function page() {
+export default async function TestApi() {
   const baseUrl = process.env.BASE_URL;
   //   const theHi = await fetch(`${baseUrl}/apiroutes/sayhi`);
   //   const theHi = await fetch(`${baseUrl}/api/apiroutes/sayhi`);
