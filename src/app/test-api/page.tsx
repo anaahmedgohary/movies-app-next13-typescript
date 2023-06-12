@@ -5,7 +5,12 @@ export default async function TestApi() {
   //   const theHi = await fetch(`${baseUrl}/apiroutes/sayhi`);
   //   const theHi = await fetch(`${baseUrl}/api/apiroutes/sayhi`);
   //   const theHi = await fetch(`/api/apiroutes/sayhi`);
-  const theHi = await fetch(`http://localhost:8080/api/apiroutes/sayhi`);
+  //   const theHi = await fetch(`http://localhost:8080/api/apiroutes/sayhi`);
+  const theHi = await fetch(
+    `${
+      process.env.NODE_ENV === "development" ? "http://localhost:8080" : baseUrl
+    }/apiroutes/sayhi`
+  );
   // http://localhost:8080
   const reso = await theHi.json();
   const result = reso?.hellos;
