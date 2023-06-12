@@ -18,7 +18,7 @@ export default async function TestApi() {
   const result = reso?.hellos;
   //   const reso = await theHi.text();
   console.log(reso);
-  const heelo = await fetch(`${baseUrl}/api`);
+  const heelo = await fetch(`${baseUrl}`);
   const elos = heelo.text();
   return (
     <div className=" min-h-screen py-[100px]">
